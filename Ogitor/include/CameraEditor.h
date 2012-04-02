@@ -69,7 +69,7 @@ namespace Ogitors
         inline void setClipDistance(const Ogre::Vector2& value) { mClipDistance->set(value); }
         inline void setFOV(Ogre::Real value) { mFOV->set(value); }
         inline void setPolygonMode(int value) { mPolygonMode->set(value); }
-        inline void setViewMode(int value) { mViewMode->set(value); }
+        inline virtual void setViewMode(int value) { mViewMode->set(value); }
 
         inline Ogre::Vector3    getPosition() { return mPosition->get(); }
         inline Ogre::Quaternion getOrientation() { return mOrientation->get(); }
@@ -79,11 +79,6 @@ namespace Ogitors
         inline Ogre::Real       getFOV() { return mFOV->get(); }
         inline Ogre::Vector3    getDirection() { return (getDerivedOrientation() * Ogre::Vector3::NEGATIVE_UNIT_Z); }
 
-        /// This function is called when user right clicks a property to get that property specific popup menu
-        /// returns false if no menu present (Disabled Menu Items has a "D" prefix where Enabled Menu Items have "E" prefix
-        virtual bool     getObjectContextMenu(UTFStringVector &menuitems);
-        /// This function is called when user selects a menuitem from ContextMenu
-        virtual void     onObjectContextMenu(int menuresult);
         virtual TiXmlElement* exportDotScene(TiXmlElement *pParent);
         /** @copydoc CBaseEditor::setParentImpl(CBaseEditor *,CBaseEditor *) */
         virtual void     setParentImpl(CBaseEditor *oldparent, CBaseEditor *newparent);
